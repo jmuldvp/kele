@@ -14,8 +14,16 @@ class Kele
     @user_data = JSON.parse(response.body)
   end
 
+  def get_mentor_availability(id)
+    response = self.class.get(api_end_point("mentors/#{id}/student_availability"), headers: {"authorization" => @auth_token})
+    @user_data = [JSON.parse(response.body)]
+  end
+
   private
   def api_end_point(endpoint)
     "https://www.bloc.io/api/v1/#{endpoint}"
   end
 end
+
+# require './lib/kele.rb'
+# 623967
