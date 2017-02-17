@@ -1,4 +1,7 @@
 require 'httparty'
+require_relative 'roadcheck'
+include RoadCheck
+
 class Kele
   include HTTParty
 
