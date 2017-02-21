@@ -22,6 +22,22 @@ class Kele
     @user_data = [JSON.parse(response.body)]
   end
 
+  def get_messages(id)
+    response = self.class.get(api_end_point("message_threads"), headers: {"authorization" => @auth_token})
+    @user_data = [JSON.parse(response.body)]
+  end
+
+  def create_message(sender, recip_id, subject, text)
+    message = self.class.post(api_end_point("messages"),
+      body: {
+        "sender": sender,
+        "recipient_id": recip_id,
+        "subject": subject,
+        "stripped-text": text
+        },
+      headers: {"authorization" => @auth_token})
+  end
+
   private
   def api_end_point(endpoint)
     "https://www.bloc.io/api/v1/#{endpoint}"
