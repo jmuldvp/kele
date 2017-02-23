@@ -37,6 +37,18 @@ class Kele
       headers: {"authorization" => @auth_token})
   end
 
+  def create_submission(assign_branch, assign_commit_link, checkpoint_id, comment, enroll_id)
+    @submission = self.class.post(api_end_point("checkpoint_submissions"),
+      body: {
+        "assignment_branch": assign_branch,
+        "assignment_commit_link": assign_commit_link,
+        "checkpoint_id": checkpoint_id,
+        "comment": comment,
+        "enrollment_id": enroll_id,
+      },
+      headers: {"authorization" => @auth_token})
+  end
+
   private
   def api_end_point(endpoint)
     "https://www.bloc.io/api/v1/#{endpoint}"
