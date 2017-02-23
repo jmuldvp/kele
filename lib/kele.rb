@@ -7,7 +7,6 @@ class Kele
 
   def initialize(email, password)
     response = self.class.post(api_end_point("sessions"), body: {"email": email, "password": password})
-    puts response.code
     raise "Error" if response.code == 404
     @auth_token = response["auth_token"]
   end
@@ -28,7 +27,7 @@ class Kele
   end
 
   def create_message(sender, recip_id, subject, text)
-    message = self.class.post(api_end_point("messages"),
+    @message = self.class.post(api_end_point("messages"),
       body: {
         "sender": sender,
         "recipient_id": recip_id,
