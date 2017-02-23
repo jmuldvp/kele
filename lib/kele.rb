@@ -27,7 +27,7 @@ class Kele
   end
 
   def create_message(sender, recip_id, subject, text)
-    message = self.class.post(api_end_point("messages"),
+    @message = self.class.post(api_end_point("messages"),
       body: {
         "sender": sender,
         "recipient_id": recip_id,

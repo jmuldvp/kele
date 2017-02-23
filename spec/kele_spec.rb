@@ -52,7 +52,7 @@ describe Kele, type: :request do
     it 'gets checkpoint info', vcr: {cassette_name: :create_message} do
       kele = Kele.new(ENV['EMAIL'], ENV['PASSWORD'])
       response = kele.create_message(ENV['SENDER'],ENV['MENTOR'],"A test subject","test text")
-      expect(response.instance_variable_set(ENV['SENDER'],ENV['MENTOR'],"A test subject","test text")).to be_a Object
+      expect(response.instance_variable_get(:@message)).to be_a Object
     end
   end
 
