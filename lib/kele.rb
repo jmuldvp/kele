@@ -45,7 +45,7 @@ class Kele
         "checkpoint_id": checkpoint_id, #1905,
         "comment": comment, #"this is my work",
         "enrollment_id": enroll_id, #11218
-      }
+      },
       headers: {"authorization" => @auth_token})
   end
 
