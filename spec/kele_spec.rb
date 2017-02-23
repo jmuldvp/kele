@@ -49,10 +49,18 @@ describe Kele, type: :request do
   end
 
   describe '#create_message' do
-    it 'gets checkpoint info', vcr: {cassette_name: :create_message} do
+    it 'creates message', vcr: {cassette_name: :create_message} do
       kele = Kele.new(ENV['EMAIL'], ENV['PASSWORD'])
       response = kele.create_message(ENV['SENDER'],ENV['MENTOR'],"A test subject","test text")
       expect(response.instance_variable_get(:@message)).to be_a Object
+    end
+  end
+
+  describe '#create_submission' do
+    it 'creates submission', vcr: {cassette_name: :create_submission} do
+      kele = Kele.new(ENV['EMAIL'], ENV['PASSWORD'])
+      response = kele.create_submission()
+      expect(response.instance_variable_get(:@submission)).to be_a Object
     end
   end
 
