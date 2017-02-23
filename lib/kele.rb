@@ -40,11 +40,11 @@ class Kele
   def create_submission(assign_branch, assign_commit_link, checkpoint_id, comment, enroll_id)
     @submission = self.class.post(api_end_point("checkpoint_submissions"),
       body: {
-        "assignment_branch": assign_branch, #"assignment-22-iterative-search",
-        "assignment_commit_link": assign_commit_link, #"https:/github.com/me/repo/commit/5",
-        "checkpoint_id": checkpoint_id, #1905,
-        "comment": comment, #"this is my work",
-        "enrollment_id": enroll_id, #11218
+        "assignment_branch": assign_branch,
+        "assignment_commit_link": assign_commit_link,
+        "checkpoint_id": checkpoint_id,
+        "comment": comment,
+        "enrollment_id": enroll_id,
       },
       headers: {"authorization" => @auth_token})
   end
